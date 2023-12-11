@@ -15,3 +15,6 @@ git add -A
 # add sail shell alias
 alias sail='[ -f sail ] && sh sail || sh vendor/bin/sail'
 alias ship='cd /mnt/c/Users/shuss/OneDrive/Documents/Laravel/build-app'
+
+# publish docker files
+sail artisan sail:publish
