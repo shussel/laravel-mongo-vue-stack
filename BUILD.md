@@ -11,3 +11,7 @@ cd build-app
 # create git archive
 git init
 git add -A
+
+# add sail shell alias
+alias sail='[ -f sail ] && sh sail || sh vendor/bin/sail'
+alias ship='cd /mnt/c/Users/shuss/OneDrive/Documents/Laravel/build-app'
