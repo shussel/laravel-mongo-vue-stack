@@ -18,3 +18,12 @@ alias ship='cd /mnt/c/Users/shuss/OneDrive/Documents/Laravel/build-app'
 
 # publish docker files
 sail artisan sail:publish
+
+# optimize docker files
+Comment out unused services
+
+# test new docker stack
+sail build
+sail up
+
+# test url http://localhost/
