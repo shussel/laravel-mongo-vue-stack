@@ -27,3 +27,14 @@ sail build
 sail up
 
 # test url http://localhost/
+
+# add php mongo support
+
+# edit Dockerfile
+&& echo '' | pecl install mongodb \
+
+# edit php.ini
+extension = mongodb.so
+
+# test
+php -m
