@@ -59,4 +59,4 @@ Maybe I went a little overboard?
 ## Build & Use
 This repo is a fully working installation of this stack. Clone, initialize, customize, fire up Docker Desktop then sail up, or 'ahoy".
 
-Build it yourself step by step here [BUILD.md](https://github.com/shussel/checkin-app/blob/main/BUILD.md)
+Build it yourself step by step here [BUILD.md](https://github.com/shussel/laravel-mongo-vue-stack/blob/main/BUILD.md)
