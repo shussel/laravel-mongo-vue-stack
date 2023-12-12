@@ -38,3 +38,14 @@ extension = mongodb.so
 
 # test
 php -m
+
+# add mongo container
+Add new files
+
+# test
+sail up -d
+# log in to mongosh on running container
+docker-compose exec mongo mongosh
+> use admin
+> db.auth('root','root')
+> rs.status()

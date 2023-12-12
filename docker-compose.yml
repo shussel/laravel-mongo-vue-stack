@@ -21,11 +21,38 @@ services:
             - '.:/var/www/html'
         networks:
             - sail
-#        depends_on:
+        depends_on:
+            - mongo
 #            - redis
 #            - minio
 #            - mailpit
 #            - selenium
+    mongo:
+        image: 'mongo'
+        build:
+            context: ./docker/mongodb
+            dockerfile: Dockerfile
+            args:
+                WWWGROUP: '${WWWGROUP}'
+        environment:
+            MONGO_INITDB_ROOT_USERNAME: '${DB_USERNAME}'
+            MONGO_INITDB_ROOT_PASSWORD: '${DB_PASSWORD}'
+            MONGO_INITDB_DATABASE: '${DB_DATABASE}'
+        ports:
+            - 27017:27017
+        extra_hosts:
+            - "host.docker.internal:host-gateway"
+        command: 'mongod --config /etc/mongod.conf'
+        healthcheck:
+            test: |
+                test $$(mongosh --quiet -u '${DB_USERNAME}' -p '${DB_PASSWORD}' --eval "try { rs.initiate({ _id: 'rs0', members: [{ _id: 0, host: 'mongo' }] }).ok } catch (_) { rs.status().ok }") -eq 1
+            interval: 10s
+            start_period: 30s
+        volumes:
+            - 'sail-mongo:/data/db'
+            - "sail-mongo-config:/data/configdb"
+        networks:
+            - sail
 #    redis:
 #        image: 'redis:alpine'
 #        ports:
@@ -80,7 +107,11 @@ services:
 networks:
     sail:
         driver: bridge
-#volumes:
+volumes:
+    sail-mongo:
+        driver: local
+    sail-mongo-config:
+        driver: local
 #    sail-redis:
 #        driver: local
 #    sail-minio:
