@@ -49,3 +49,17 @@ docker-compose exec mongo mongosh
 > use admin
 > db.auth('root','root')
 > rs.status()
+> 
+> # add laravel mongodb
+
+# rebuild for latest php setup
+sail build --no-cache
+
+# get mongodb/laravel-mongodb
+sail composer require mongodb/laravel-mongodb
+
+# update app.php and database.php config files
+
+# test
+sail up -d
+sail artisan migrate
