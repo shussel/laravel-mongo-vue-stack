@@ -55,7 +55,7 @@ docker-compose exec mongo mongosh
 # rebuild for latest php setup
 sail build --no-cache
 
-# get mongodb/laravel-mongodb
+# add laravel-mongodb
 sail composer require mongodb/laravel-mongodb
 
 # update app.php and database.php config files
@@ -63,3 +63,5 @@ sail composer require mongodb/laravel-mongodb
 # test
 sail up -d
 sail artisan migrate
+
+# add pirate aliases
