@@ -7,12 +7,12 @@ I also try to keep up with the latest versions of the parts involved. This might
 ## Docker with Laravel Sail
 Laravel has a great toolkit, but setting up for local development used to be a pain. Docker changed everything. No more XAMPP or other clunky Windows setups. With Docker, you have efficient custom environments that spin up easily as self-contained images you can share or deploy. No more "it doesn't work on my machine" between developers.
 
-[Sail](https://laravel.com/docs/10.x/sail) makes Laravel development with Docker even better. Sail sets up a Docker network with multiple containers for Laravel/php, databases, and other dev tools. It extends the Laravel command line to work in a Docker environment.
+[Laravel Sail](https://laravel.com/docs/10.x/sail) makes Laravel development with Docker even better. Sail sets up a Docker network with multiple containers for Laravel/php, databases, and other dev tools. It extends the Laravel command line to work in a Docker environment.
 
 ## MongoDB
 MongoDB is great for developers. Its document centered model makes sense for web apps. Schemas that change on the fly save time and invite experimentation. Its latest integration with Laravel Eloquent makes building and querying models like using any other database. It speaks javascript.
 
-Since there is no standard MongoDB option in Sail, I replaced the default MySQL container with MongoDB. I set up MongoDB latest in [docker-compose.yml](https://github.com/shussel/laravel-mongo-vue-stack/blob/main/docker-compose.yml) with a custom [Dockerfile](https://github.com/shussel/laravel-mongo-vue-stack/blob/main/docker/mongodb/Dockerfile). It's configured as a single member replica set in order to use all the latest features like transactions. I can add additional replica set servers to test advanced setups, or change the whole configuration in [mongod.conf](https://github.com/shussel/laravel-mongo-vue-stack/blob/main/docker/mongodb/mongod.conf)
+Since there is no standard MongoDB option in Sail, I replaced the default MySQL container with MongoDB. I set up MongoDB latest in [docker-compose.yml](docker-compose.yml) with a custom [Dockerfile](docker/mongodb/Dockerfile). It's configured as a single member replica set in order to use all the latest features like transactions. I can add additional replica set servers to test advanced setups, or change the whole configuration in [mongod.conf](docker/mongodb/mongod.conf)
 
 ## Laravel Breeze
 Breeze is a Laravel component that builds an app skeleton with login and registration functions every app needs, and it configures one of the many front-end implementations available with Laravel. My choice is the Vue stack, using Inertia as the connection between Laravel and Vue. 
@@ -52,11 +52,11 @@ Laravel Sail commands can be long. It's good to create aliases to cut down on ty
 
 **>fleet** `sail ps` Look at all those containers sailing on the Laravel seas.
 
-[.bash_aliases](https://github.com/shussel/laravel-mongo-vue-stack/blob/main/.bash_aliases)
+[.bash_aliases](.bash_aliases)
 
 Maybe I went a little overboard?
 
 ## Build & Use
 This repo is a fully working installation of this stack. Clone, initialize, customize, fire up Docker Desktop then sail up, or 'ahoy".
 
-Build it yourself step by step here [BUILD.md](https://github.com/shussel/laravel-mongo-vue-stack/blob/main/BUILD.md)
+Build it yourself step by step here [BUILD.md](BUILD.md)

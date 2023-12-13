@@ -15,7 +15,7 @@ cd <app path>
 ./vendor/bin/sail up -d
 ./vendor/bin/sail test
 ```
-Browse http://localhost/ for laravel app home.
+Browse http://localhost/ for your laravel app home.
 
 ## Add shell alias
 Add this alias to your shell to shorten the sail command
@@ -24,7 +24,7 @@ alias sail='[ -f sail ] && sh sail || sh vendor/bin/sail'`
 ```
 
 ## Publish sail docker files
-Copy your docker files to `/docker` for customization.
+Copy your docker files to [docker/](docker/) for customization.
 ```
 sail artisan sail:publish
 ```
@@ -36,11 +36,11 @@ sail up
 Browse http://localhost/ for laravel app home.
 
 ## Add php mongodb extension
-Add php mongodb pecl install to the run command in `/docker/8.2/Dockerfile` just after the php install.
+Add php mongodb pecl install to the run command in [docker/8.2/Dockerfile](docker/8.2/Dockerfile) just after the php install.
 ```
 && echo '' | pecl install mongodb \
 ```
-Add the extension to `/docker/8.2/php.ini`
+Add the extension to [docker/8.2/php.ini](docker/8.2/php.ini)
 ```
 extension = mongodb.so`
 ```
@@ -54,7 +54,7 @@ php -m
 ```
 
 ## Add mongodb container
-There is no preset mongodb setup for laravel sail, so you will have to build your own container. Add the following service to `docker-compose.yml`
+There is no preset mongodb setup for laravel sail, so you will have to build your own container. Add the following service to [docker-compose.yml](docker-compose.yml)
 ```
 services:
     mongo:
@@ -91,7 +91,7 @@ volumes:
 ```
 The most interesting part of this code is the use of healthcheck to trigger rs.initiate, after the server is ready. This was tricky, but this method is the best of many variations I tried.
 
-Next replace the default database settings in `.env` with these. This default root user will be used by both your docker setup and laravel.
+Next replace the default database settings in [.env](.env.example) with these. This default root user will be used by both your docker setup and laravel.
 ```
 DB_CONNECTION=mongodb
 DB_HOST=mongo
@@ -100,7 +100,7 @@ DB_DATABASE=<app name>
 DB_USERNAME=root
 DB_PASSWORD=root
 ```
-Create `/docker/mongodb/mongod.conf` These settings create a one member mongodb replica set which allows you to use advanced functions in mongo like transactions.
+Create [docker/mongodb/mongod.conf](docker/mongodb/mongod.conf) These settings create a one member mongodb replica set which allows you to use advanced functions in mongo like transactions.
 ```
 security:
   authorization: enabled
@@ -111,7 +111,7 @@ net:
 replication:
   replSetName: "rs0"
 ```
-Create `/docker/mongodb/Dockerfile` extending the base mongo build to include `mongod.conf` and generate a replication key.
+Create [docker/mongodb/Dockerfile](docker/mongodb/Dockerfile) extending the base mongo build to include [docker/mongodb/mongod.conf](docker/mongodb/mongod.conf) and generate a replication key.
 ```
 FROM mongo:latest
 
@@ -141,11 +141,11 @@ There is a new official package [mongodb/laravel-mongodb](https://github.com/mon
 ```
 sail composer require mongodb/laravel-mongodb
 ```
-Add the service provider to `/config/app.php`
+Add the service provider to [config/app.php](config/app.php)
 ```
 MongoDB\Laravel\MongoDBServiceProvider::class,
 ```
-Make these changes in `/config/database.php`
+Make these changes in [config/database.php](config/database.php)`
 ```
 'default' => env('DB_CONNECTION', 'mongodb'),
 
@@ -177,7 +177,7 @@ We are choosing Vue front end with ssr support, out favorite stack.
 ```
 sail artisan breeze:install vue --ssr
 ```
-Update `/app/Models/user.php` to replace Authenticatable with MongoDB version
+Update [app/Models/user.php](app/Models/user.php) to replace Authenticatable with MongoDB version
 ```
 use MongoDB\Laravel\Auth\User as Authenticatable;
 ```
@@ -215,7 +215,7 @@ Sail commands can be long. It's good to create aliases to cut down on typing. Al
 
 **>fleet** `sail ps` Look at all those containers sailing on the Laravel sea.
 
-`.bash_aliases`
+[.bash_aliases](.bash_aliases)
 ```
 alias sail='[ -f sail ] && sh sail || sh vendor/bin/sail'
 alias ship='cd <app folder>'
