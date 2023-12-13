@@ -188,6 +188,12 @@ sail test
 ```
 If the tests (mostly) pass, your breeze app skeleton is up and running. You now have working http://localhost/login and http://localhost/register pages along with related services, and a solid foundation to build your app upon. Build something great.
 
+## Enable Xdebug
+To make Xdebug available for external tools add this to [.env](.env.example)
+```
+SAIL_XDEBUG_MODE=develop,debug,coverage
+```
+
 ## Sail like a pirate
 Sail commands can be long. It's good to create aliases to cut down on typing. All this sail put me in the mind of pirates, so I created this set of themed aliases to smooth the Laravel seas.
 
