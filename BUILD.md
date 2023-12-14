@@ -191,8 +191,28 @@ If the tests (mostly) pass, your breeze app skeleton is up and running. You now 
 ## Enable Xdebug
 To make Xdebug available for external tools add this to [.env](.env.example)
 ```
-SAIL_XDEBUG_MODE=develop,debug,coverage
+SAIL_XDEBUG_MODE=develop,debug
+SAIL_XDEBUG_CONFIG="client_host=host.docker.internal idekey=docker"
 ```
+Add this to [.docker-compose.yml](.docker-compose.yml) to integrate with PHP Storm
+```
+PHP_IDE_CONFIG: "serverName=Docker"
+```
+A good guide to integrating Xdebug with PhpStorm is [here](https://blog.stackademic.com/debugging-laravel-sail-with-xdebug-3-in-phpstorm-2023-a-detailed-guide-84a594c09586)
+
+## Connect to Mongo Compass
+Your local connection string in Mongo Compass is:
+```
+mongodb://root:root@localhost:27017/?directConnection=true&authMechanism=DEFAULT
+```
+## Add PhpInfo route
+Add a handy phpinfo route to [routes/web.php](routes/web.php)
+```
+Route::get('/phpinfo', function () {
+    return phpinfo();
+});
+```
+Now you can see your PHP settings at http://localhost/phpinfo
 
 ## Sail like a pirate
 Sail commands can be long. It's good to create aliases to cut down on typing. All this sail put me in the mind of pirates, so I created this set of themed aliases to smooth the Laravel seas.
