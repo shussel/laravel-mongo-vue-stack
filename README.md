@@ -59,6 +59,6 @@ Laravel Sail commands can be long. It's good to create aliases to cut down on ty
 Maybe I went a little overboard?
 
 ## Build & Use
-This repo is a fully working installation of this stack. Clone, initialize, customize, fire up Docker Desktop then sail up, or 'ahoy".
+To use this for your own app, see [SETUP.md](SETUP.md)
 
 Build it yourself step by step here [BUILD.md](BUILD.md)
