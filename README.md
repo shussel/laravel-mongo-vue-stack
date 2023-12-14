@@ -1,7 +1,6 @@
 # My Laravel/Mongo/Vue dev stack
 
-![dev screen](https://raw.githubusercontent.com/shussel/laravel-mongo-vue-stack
-/main/devscreen.png)
+![dev screen](https://raw.githubusercontent.com/shussel/laravel-mongo-vue-stack/main/devscreen.png)
 
 When I'm starting a new project, I take the opportunity to update my development stack. Laravel has long been my goto for PHP work. MongoDB is great for quick development with minimal setup. Vue is most flexible and versatile on the front end. Together they make one of the best current stacks available, and what I use today.
 
