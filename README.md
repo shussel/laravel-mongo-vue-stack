@@ -1,5 +1,8 @@
 # My Laravel/Mongo/Vue dev stack
 
+![dev screen](https://raw.githubusercontent.com/shussel/laravel-mongo-vue-stack
+/main/devscreen.png)
+
 When I'm starting a new project, I take the opportunity to update my development stack. Laravel has long been my goto for PHP work. MongoDB is great for quick development with minimal setup. Vue is most flexible and versatile on the front end. Together they make one of the best current stacks available, and what I use today.
 
 I also try to keep up with the latest versions of the parts involved. This might cause setup headaches, but I'd rather take the pain at the start to build an app that's not already old at its launch. Right now this means using PHP 8.2, Laravel 10, MongoDB 7, and Vue 3.
