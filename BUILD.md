@@ -189,7 +189,7 @@ sail test
 If the tests (mostly) pass, your breeze app skeleton is up and running. You now have working http://localhost/login and http://localhost/register pages along with related services, and a solid foundation to build your app upon. Build something great.
 
 ## Enable Xdebug
-To make Xdebug available for external tools add this to [.env](.env.example)
+To make Xdebug available for external tools uncomment these lines in [.env](.env.example)
 ```
 SAIL_XDEBUG_MODE=develop,debug
 SAIL_XDEBUG_CONFIG="client_host=host.docker.internal idekey=docker"
