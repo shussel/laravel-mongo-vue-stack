@@ -2,9 +2,9 @@
 
 To start a new project with this package
 ```
-git clone https://github.com/shussel/laravel-mongo-vue-stack <app folder>>
+git clone https://github.com/shussel/laravel-mongo-vue-stack <app folder>
 
-cd <app folder>>
+cd <app folder>
 
 # copy environment settings
 cp .env.example .env
